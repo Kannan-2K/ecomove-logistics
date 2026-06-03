@@ -1,42 +1,40 @@
 import { motion } from "framer-motion";
-import { Leaf, BarChart3, Shield, FileCheck2, Trophy } from "lucide-react";
+import { Leaf, Layers, Tag, ShieldCheck } from "lucide-react";
 
-const usps = [
+const whyUs = [
   {
     icon: Leaf,
-    title: "Decarbonization",
-    desc: "Accelerates adoption of electric mobility to reduce urban emissions.",
-    accent: "152 60% 36%",
+    title: "Carbon Neutral Economy",
+    desc: "We're driving India's green logistics revolution — 100% electric fleet operations for zero-emission urban delivery.",
+    color: "hsl(152 65% 30%)",
+    bg: "hsl(152 65% 30% / 0.08)",
   },
   {
-    icon: BarChart3,
-    title: "Fleet Analytics",
-    desc: "Real-time insights on vehicle performance, utilization, and delivery efficiency.",
-    accent: "160 50% 45%",
+    icon: Layers,
+    title: "Integrated Platform",
+    desc: "A single unified platform managing fleet analytics, compliance, insurance, and rewards — no fragmented tools.",
+    color: "hsl(200 75% 40%)",
+    bg: "hsl(200 75% 40% / 0.08)",
   },
   {
-    icon: Shield,
-    title: "Insurance Enabler",
-    desc: "Integrated ecosystem enabling smart insurance coverage for fleets and drivers.",
-    accent: "170 45% 40%",
+    icon: Tag,
+    title: "Competitive Pricing",
+    desc: "Transparent, flexible pricing models designed for businesses of every size — from single operators to large enterprises.",
+    color: "hsl(38 95% 48%)",
+    bg: "hsl(38 95% 48% / 0.1)",
   },
   {
-    icon: FileCheck2,
-    title: "Compliance Management",
-    desc: "Automated compliance for government regulations, documentation, and fleet operations.",
-    accent: "145 55% 38%",
-  },
-  {
-    icon: Trophy,
-    title: "Rewards Platform",
-    desc: "Gamified rewards system encouraging eco-friendly driving and operational efficiency.",
-    accent: "140 50% 42%",
+    icon: ShieldCheck,
+    title: "Trust & Reliability",
+    desc: "Built for India's complex regulatory landscape with end-to-end compliance management, safety protocols, and certified operations.",
+    color: "hsl(265 60% 50%)",
+    bg: "hsl(265 60% 50% / 0.08)",
   },
 ];
 
 const USPSection = () => {
   return (
-    <section className="py-24 md:py-32 px-6">
+    <section id="usp" className="py-24 md:py-32 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,31 +42,33 @@ const USPSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-medium uppercase tracking-widest text-primary mb-3 block">Key Differentiators</span>
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-3 block">Why Choose Us</span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
-            What makes Kho Kho{" "}
-            <span className="gradient-text">unique</span>
+            Four reasons businesses<br />
+            <span className="gradient-text">choose Kho Kho</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {usps.map((item, i) => (
+        <div className="grid md:grid-cols-2 gap-6">
+          {whyUs.map((item, i) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              className={`relative p-8 rounded-2xl border border-border bg-card hover:eco-shadow-lg transition-all duration-300 ${i === 0 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="flex gap-5 p-7 rounded-2xl border border-border bg-card card-hover"
             >
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                style={{ background: `hsl(${item.accent} / 0.1)` }}
+                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                style={{ background: item.bg }}
               >
-                <item.icon className="w-7 h-7 text-primary" />
+                <item.icon className="w-7 h-7" style={{ color: item.color }} />
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground mb-3">{item.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+              <div>
+                <h3 className="font-display text-xl font-bold text-foreground mb-2">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">{item.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
